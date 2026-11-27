@@ -1,5 +1,4 @@
-
-package org.glassfish.jersey.archetypes;
+package com.restapi;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,9 +10,9 @@ public class DATArepo {
 
     public DATArepo() {
 
-        String url = "jdbc:mysql://localhost:3306/RESTDATA";
-        String username = "root";
-        String password = System.getenv("pwd");
+        String url = getEnvOrDefault("DB_URL", "jdbc:mysql://localhost:3306/RESTDATA");
+        String username = getEnvOrDefault("DB_USER", "root");
+        String password = resolvePassword();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -131,5 +130,20 @@ public class DATArepo {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private static String getEnvOrDefault(String name, String defaultValue) {
+        String value = System.getenv(name);
+        return (value != null && !value.isBlank()) ? value : defaultValue;
+    }
+
+    private static String resolvePassword() {
+        for (String key : new String[]{"DB_PASSWORD", "MYSQL_PASSWORD", "pwd"}) {
+            String value = System.getenv(key);
+            if (value != null && !value.isEmpty()) {
+                return value;
+            }
+        }
+        return null;
     }
 }

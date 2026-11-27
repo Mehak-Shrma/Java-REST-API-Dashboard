@@ -1,6 +1,4 @@
-
-
-package org.glassfish.jersey.archetypes;
+package com.restapi;
 
 import java.util.List;
 
@@ -30,8 +28,8 @@ public class DATAresourse {
 
     // CREATE
     @POST
-    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("DATA")
     public DATA createDATA(DATA d1) {
         repo.create(d1);
@@ -40,8 +38,8 @@ public class DATAresourse {
 
     // UPDATE
     @PUT
-    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("DATA")
     public DATA updateDATA(DATA d1) {
         repo.update(d1);

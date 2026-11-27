@@ -1,4 +1,4 @@
-package org.glassfish.jersey.archetypes;
+package com.restapi;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlAccessorType;
